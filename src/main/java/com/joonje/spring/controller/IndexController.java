@@ -61,7 +61,6 @@ public class IndexController {
 		Font mFont = new Font("华文宋体", Font.BOLD, 30); // 通过Font构造字体
 		g.setColor(getRandColor(200, 250)); // 改变图形的当前颜色为随机生成的颜色
 		g.fillRect(0, 0, width, height); // 绘制一个填色矩形
-
 		// 画一条折线
 		BasicStroke bs = new BasicStroke(2f,
 				BasicStroke.CAP_BUTT,
