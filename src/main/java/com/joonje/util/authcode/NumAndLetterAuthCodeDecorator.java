@@ -9,7 +9,7 @@ public class NumAndLetterAuthCodeDecorator extends AuthCodeGenerator {
 	}
 	@Override
 	public BufferedImage generate() {
-		BufferedImage image = generator.generate();
+		generator.generate();
 		return null;
 	}
 

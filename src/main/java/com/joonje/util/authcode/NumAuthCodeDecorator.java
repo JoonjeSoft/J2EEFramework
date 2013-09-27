@@ -2,9 +2,6 @@ package com.joonje.util.authcode;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.io.UnsupportedEncodingException;
 import java.util.Random;
@@ -24,7 +21,7 @@ public class NumAuthCodeDecorator extends AuthCodeGenerator{
 		Font mFont = new Font("楷体", Font.BOLD, 30);
 		g.setFont(mFont);
 		Random random = new Random();
-		String sRand = "";
+		//String sRand = "";
 		int itmp = 0;
 		for (int i = 0; i < 4; i++) {
 			if (random.nextInt(2) == 1) {
@@ -33,7 +30,7 @@ public class NumAuthCodeDecorator extends AuthCodeGenerator{
 				itmp = random.nextInt(10) + 48; // 生成0~9的数字
 			}
 			char ctmp = (char) itmp;
-			sRand += String.valueOf(ctmp);
+			//sRand += String.valueOf(ctmp);
 			Color color = new Color(
 					20 + random.nextInt(110),
 					20 + random.nextInt(110),

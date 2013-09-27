@@ -10,7 +10,7 @@ public class LetterAuthCodeDecorator extends
 	}
 	@Override
 	public BufferedImage generate() {
-		BufferedImage image = generator.generate();
+		generator.generate();
 		return null;
 	}
 
