@@ -9,6 +9,7 @@ public class BasicAuthCodeGenerator extends
 		AuthCodeGenerator {
 	private int width = 200;
 	private int height = 60;
+	private int len = 4;
 	public BasicAuthCodeGenerator() {
 		BufferedImage image = new BufferedImage(width,
 				height, BufferedImage.TYPE_INT_RGB); // 创建BufferedImage类的对象
@@ -50,6 +51,14 @@ public class BasicAuthCodeGenerator extends
 
 	public void setHeight(int height) {
 		this.height = height;
+	}
+
+	public int getLen() {
+		return len;
+	}
+
+	public void setLen(int len) {
+		this.len = len;
 	}
 
 }

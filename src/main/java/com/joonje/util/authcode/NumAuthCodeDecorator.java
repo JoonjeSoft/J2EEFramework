@@ -13,6 +13,12 @@ public class NumAuthCodeDecorator extends AuthCodeGenerator{
 		this.generator = generator;
 		this.g = generator.g;
 		this.bfImage = generator.bfImage;
+		if(null!=random){
+			this.random = generator.random;
+		}else{
+			random = new Random();
+		}
+		this.len = generator.len;
 	}
 	
 	@Override
@@ -20,15 +26,10 @@ public class NumAuthCodeDecorator extends AuthCodeGenerator{
 		generator.generate();
 		Font mFont = new Font("楷体", Font.BOLD, 30);
 		g.setFont(mFont);
-		Random random = new Random();
 		//String sRand = "";
 		int itmp = 0;
 		for (int i = 0; i < 4; i++) {
-			if (random.nextInt(2) == 1) {
-				itmp = random.nextInt(26) + 65; // 生成A~Z的字母
-			} else {
-				itmp = random.nextInt(10) + 48; // 生成0~9的数字
-			}
+			itmp = random.nextInt(10) + 48; // 生成0~9的数字
 			char ctmp = (char) itmp;
 			//sRand += String.valueOf(ctmp);
 			Color color = new Color(
