@@ -14,21 +14,33 @@
 		<spring.version>3.2.4.RELEASE</spring.version>
 		<hibernate.version>4.2.5.Final</hibernate.version>
 		<slf4j-api.version>1.7.5</slf4j-api.version>
-		<logback.version>1.0.13</logback.version> 
-	</properties>    
-	<repositories> 
-		<!-- <repository>
-			<id>hibernate-repo</id>
-			<name>JBoss Nexus</name>
-			<url>https://repository.jboss.org/nexus/content/groups/public/org/hibernate</url>
+		<logback.version>1.0.13</logback.version>
+	</properties>
+	<repositories>
+		<!-- <repository> <id>hibernate-repo</id> <name>JBoss Nexus</name> <url>https://repository.jboss.org/nexus/content/groups/public/org/hibernate</url> 
+			</repository> -->
+		<!--<repository>
+			<id>3rd-party</id>
+			<name>3rd-party</name>
+			<url>http://forge.octo.com/archiva/repository/3rd-party</url>
+		</repository>-->
+		 <!-- <repository>
+			<id>atlassian-m2-contrib</id>
+			<name>atlassian-m2-contrib</name>
+			<url>http://svn.atlassian.com/svn/public/contrib/repository/maven2</url>
 		</repository> -->
-		<!-- <repository>
+		<!-- <repository>    
 			<id>atlassian-m2-repository</id>
 			<name>atlassian-m2-repository</name>
 			<url>http://repository.atlassian.com/maven2</url>
-		</repository> -->
-	</repositories>
-	<dependencies> 
+		</repository>  --> 
+		<repository>  
+			<id>jahia-repository</id>
+			<name>jahia-repository</name>
+			<url>http://maven.jahia.org/maven2/</url>
+		</repository>  
+	</repositories>  
+	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -155,6 +167,21 @@
 			<artifactId>h2</artifactId>
 			<version>1.3.172</version>
 		</dependency>
+		<dependency>
+			<groupId>com.octo.captcha</groupId>
+			<artifactId>jcaptcha</artifactId>
+			<version>1.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jhlabs</groupId>
+			<artifactId>imaging</artifactId>
+			<version>01012005</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>J2EEFramework</finalName>
@@ -202,20 +229,17 @@
 					<!-- application path always starts with / -->
 					<path>/</path>
 					<!-- optional path to a context file -->
- 					<!-- <contextFile>/Users/olamy/dev/tomcat-context-archiva-gmail.xml</contextFile> -->
- 					<!-- optional system propoerties you want to add -->
-					<!-- <systemProperties>
-						<appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base>
-						<appserver.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-home</appserver.home>
-						<derby.system.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base/logs</derby.system.home>
-						<java.io.tmpdir>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target</java.io.tmpdir>
-					</systemProperties> -->
+					<!-- <contextFile>/Users/olamy/dev/tomcat-context-archiva-gmail.xml</contextFile> -->
+					<!-- optional system propoerties you want to add -->
+					<!-- <systemProperties> <appserver.base>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base</appserver.base> 
+						<appserver.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-home</appserver.home> 
+						<derby.system.home>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target/appserver-base/logs</derby.system.home> 
+						<java.io.tmpdir>/Users/olamy/dev/sources/tomcat/maven-plugin-svn/target/checkout/target</java.io.tmpdir> 
+						</systemProperties> -->
 					<!-- if you want to use test dependencies rather than only runtime -->
 					<!-- <useTestClasspath>false</useTestClasspath> -->
 					<!-- optional if you want to add some extra directories into the classloader -->
-					<!-- <additionalClasspathDirs>
-						<additionalClasspathDir></additionalClasspathDir>
-					</additionalClasspathDirs> -->
+					<!-- <additionalClasspathDirs> <additionalClasspathDir></additionalClasspathDir> </additionalClasspathDirs> -->
 				</configuration>
 			</plugin>
 		</plugins>

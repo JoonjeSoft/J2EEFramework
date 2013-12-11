@@ -89,5 +89,5 @@
 		<aop:pointcut id="transactionPointCuts" expression="execution(* com.anjunjie.dao.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointCuts" />
 	</aop:config>
-
+	<import resource="file:jcaptcha.xml"/>
 </beans>
