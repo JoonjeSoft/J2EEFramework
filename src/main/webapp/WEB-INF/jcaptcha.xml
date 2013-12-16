@@ -5,34 +5,22 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
       					http://www.springframework.org/schema/beans/spring-beans.xsd"
 	default-autowire="byName">
-	<!-- <bean id="captchaServlet" class="com.jawava.XXXX.XXX.TopImageCaptchaServlet" /> -->
-
 	<bean id="captchaService" class="com.octo.captcha.service.multitype.GenericManageableCaptchaService">
-		<description>验证码服务</description>
-		<constructor-arg index="0">
-			<ref bean="imageEngine" />
-		</constructor-arg>
-		<constructor-arg index="1">
-			<value>300</value>
-		</constructor-arg><!--超时时间 秒 -->
-		<constructor-arg index="2">
-			<value>20000</value>
-		</constructor-arg><!--最大并发数 -->
-		<constructor-arg index="3">
-			<value>20000</value>
-		</constructor-arg><!--第四个参数官网示例上没有给出，会报错，后来看了API才知道少了个参数 -->
+		<constructor-arg index="0" ref="imageEngine" />
+		<constructor-arg type="int" index="1" value="180" /> <!-- minGuarantedStorageDelayInSeconds -->
+		<constructor-arg type="int" index="2" value="180000" /> <!-- maxCaptchaStoreSize -->
+		<constructor-arg type="int" index="3" value="75000" /> <!-- captchaStoreLoadBeforeGarbageCollection -->
 	</bean>
-
-	<bean id="imageEngine" class="com.octo.captcha.engine.image.DefaultImageCaptchaEngine">
+	<bean id="imageEngine" class="com.octo.captcha.engine.GenericCaptchaEngine">
 		<description>图片引擎</description>
 		<constructor-arg index="0">
 			<list>
-				<ref bean="CaptchaFactory" />
+				<ref bean="captchaFactory" />
 			</list>
 		</constructor-arg>
 	</bean>
-
-	<bean id="CaptchaFactory" class="com.octo.captcha.image.gimpy.GimpyFactory">
+	
+	<bean id="captchaFactory" class="com.octo.captcha.image.gimpy.GimpyFactory">
 		<description>验证码工厂</description>
 		<constructor-arg>
 			<ref bean="wordgen" />
@@ -43,14 +31,14 @@
 	</bean>
 
 	<bean id="wordgen" class="com.octo.captcha.component.word.wordgenerator.RandomWordGenerator">
-		<description>文字产生器，提供了好几种实现，经过比较选用了这种</description>
+		<description>文字产生器</description>
 		<constructor-arg index="0">
 			<value>ABCDEFG</value>
 		</constructor-arg>
 	</bean>
 
 	<bean id="wordtoimage" class="com.octo.captcha.component.image.wordtoimage.ComposedWordToImage">
-		<description>图片生成器</description>
+		<description>文字转图片</description>
 		<constructor-arg index="0">
 			<ref bean="fontGenRandom" />
 		</constructor-arg>
@@ -58,79 +46,173 @@
 			<ref bean="backGenUni" />
 		</constructor-arg>
 		<constructor-arg index="2">
-			<ref bean="simpleWhitePaster" />
+			<ref bean="randomTextPaster" />
 		</constructor-arg>
 	</bean>
-
 	<bean id="fontGenRandom" class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
-		<description>文字转换图片</description>
+		<description>字体生成器</description>
 		<constructor-arg index="0">
-			<value>20</value>
-		</constructor-arg><!--字体最小尺寸 -->
+			<value>30</value><!-- 字体最小大小 -->
+		</constructor-arg>
 		<constructor-arg index="1">
-			<value>20</value>
-		</constructor-arg><!--字体最大尺寸 -->
+			<value>30</value><!-- 字体最大大小 -->
+		</constructor-arg>
+		<constructor-arg index="2">
+			<list>
+				<ref bean="fontArial" /><!-- 所使用的字体集合 -->
+				<ref bean="fontBellMt" />
+				<ref bean="fontCreditValley" />
+			</list>
+		</constructor-arg>
 	</bean>
-
-	<bean id="backGenUni" class="com.octo.captcha.component.image.backgroundgenerator.GradientBackgroundGenerator">
+	<bean id="backGenUni" class="com.octo.captcha.component.image.backgroundgenerator.UniColorBackgroundGenerator">
+		<description>背景图片生成器</description>
 		<constructor-arg index="0">
-			<value>62</value>
-		</constructor-arg><!--背景图片宽度 -->
+			<value>100</value>
+		</constructor-arg>
 		<constructor-arg index="1">
-			<value>20</value>
-		</constructor-arg><!--背景图片高度 -->
-		<constructor-arg type="java.awt.Color" index="2">
-			<ref bean="colorGrey" />
+			<value>50</value>
 		</constructor-arg>
-		<constructor-arg type="java.awt.Color" index="3">
-			<ref bean="colorGreen" />
-		</constructor-arg>
-
 	</bean>
-
 	<bean id="simpleWhitePaster" class="com.octo.captcha.component.image.textpaster.SimpleTextPaster">
 		<constructor-arg type="java.lang.Integer" index="0">
-			<value>4</value><!--字符最少个数 -->
+			<value>4</value>
 		</constructor-arg>
 		<constructor-arg type="java.lang.Integer" index="1">
-			<value>4</value><!--字符最多个数 -->
+			<value>4</value>
 		</constructor-arg>
 		<constructor-arg type="java.awt.Color" index="2">
-			<ref bean="colorFont" />
+			<ref bean="colorGreen" />
 		</constructor-arg>
 	</bean>
 
-	<bean id="colorGrey" class="java.awt.Color">
-		<constructor-arg index="0" type="int">
-			<value>200</value>
+	<bean id="randomTextPaster" class="com.octo.captcha.component.image.textpaster.DecoratedRandomTextPaster">
+		<constructor-arg type="java.lang.Integer" index="0">
+			<value>4</value>
 		</constructor-arg>
-		<constructor-arg index="1" type="int">
-			<value>255</value>
+		<constructor-arg type="java.lang.Integer" index="1">
+			<value>4</value>
 		</constructor-arg>
-		<constructor-arg index="2" type="int">
-			<value>200</value>
+		<constructor-arg index="2">
+			<ref bean="randomListColorGenerator" />
+		</constructor-arg>
+		<constructor-arg index="3">
+			<ref bean="lineTextDecorator" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="singleColorGenerator" class="com.octo.captcha.component.image.color.SingleColorGenerator">
+		<description>单一颜色生成器</description>
+		<constructor-arg type="java.awt.Color" index="0">
+			<ref bean="colorGreen" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="randomListColorGenerator" class="com.octo.captcha.component.image.color.RandomListColorGenerator">
+		<description>随机颜色生成器</description>
+		<constructor-arg index="0">
+			<list>
+				<ref bean="color1" />
+				<ref bean="color2" />
+				<ref bean="color3" />
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="lineTextDecorator" class="com.octo.captcha.component.image.textpaster.textdecorator.LineTextDecorator">
+		<description>干扰线</description>
+		<constructor-arg type="java.lang.Integer" index="0">
+			<value>1</value><!-- 干扰线数量 -->
+		</constructor-arg>
+		<constructor-arg  index="1">
+			<ref bean="randomListColorGenerator" /><!-- 干扰线颜色 -->
+		</constructor-arg>
+	</bean>
+	<bean id="baffleTextDecorator" class="com.octo.captcha.component.image.textpaster.textdecorator.BaffleTextDecorator">
+		<description>干扰点</description>
+		<constructor-arg type="java.lang.Integer" index="0">
+			<value>1</value><!-- 干扰线数量 -->
+		</constructor-arg>
+		<constructor-arg type="java.awt.Color" index="1">
+			<ref bean="colorGreen" /><!-- 干扰线颜色 -->
+		</constructor-arg>
+	</bean>
+	
+	<bean id="fontArial" class="java.awt.Font">
+		<constructor-arg index="0">
+			<value>Arial</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>0</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>30</value>
+		</constructor-arg>
+	</bean>
+	<bean id="fontBellMt" class="java.awt.Font">
+		<constructor-arg index="0">
+			<value>Bell MT</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>0</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>30</value>
+		</constructor-arg>
+	</bean>
+	<bean id="fontCreditValley" class="java.awt.Font">
+		<constructor-arg index="0">
+			<value>Credit valley</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>0</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<value>30</value>
 		</constructor-arg>
 	</bean>
 	<bean id="colorGreen" class="java.awt.Color">
-		<constructor-arg index="0" type="int">
-			<value>110</value>
+		<constructor-arg type="int" index="0">
+			<value>0</value>
 		</constructor-arg>
-		<constructor-arg index="1" type="int">
-			<value>120</value>
+		<constructor-arg type="int" index="1">
+			<value>255</value>
 		</constructor-arg>
-		<constructor-arg index="2" type="int">
-			<value>200</value>
+		<constructor-arg type="int" index="2">
+			<value>0</value>
 		</constructor-arg>
 	</bean>
-	<bean id="colorFont" class="java.awt.Color">
-		<constructor-arg index="0" type="int">
-			<value>60</value>
+	<bean id="color1" class="java.awt.Color">
+		<constructor-arg type="int" index="0">
+			<value>23</value>
 		</constructor-arg>
-		<constructor-arg index="1" type="int">
-			<value>60</value>
+		<constructor-arg type="int" index="1">
+			<value>67</value>
 		</constructor-arg>
-		<constructor-arg index="2" type="int">
-			<value>60</value>
+		<constructor-arg type="int" index="2">
+			<value>172</value>
+		</constructor-arg>
+	</bean>
+	<bean id="color2" class="java.awt.Color">
+		<constructor-arg type="int" index="0">
+			<value>220</value>
+		</constructor-arg>
+		<constructor-arg type="int" index="1">
+			<value>34</value>
+		</constructor-arg>
+		<constructor-arg type="int" index="2">
+			<value>11</value>
+		</constructor-arg>
+	</bean>
+	<bean id="color3" class="java.awt.Color">
+		<constructor-arg type="int" index="0">
+			<value>23</value>
+		</constructor-arg>
+		<constructor-arg type="int" index="1">
+			<value>170</value>
+		</constructor-arg>
+		<constructor-arg type="int" index="2">
+			<value>27</value>
 		</constructor-arg>
 	</bean>
 </beans>
