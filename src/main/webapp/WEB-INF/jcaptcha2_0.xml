@@ -46,7 +46,7 @@
 			<ref bean="backGenUni" />
 		</constructor-arg>
 		<constructor-arg index="2">
-			<ref bean="decoratedRandomTextPaster" />
+			<ref bean="glyphsPaster" />
 		</constructor-arg>
 	</bean>
 	<bean id="fontGenRandom" class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
@@ -71,7 +71,7 @@
 			<value>100</value>
 		</constructor-arg>
 		<constructor-arg index="1">
-			<value>50</value>
+			<value>100</value>
 		</constructor-arg>
 	</bean>
 	<bean id="simpleWhitePaster" class="com.octo.captcha.component.image.textpaster.SimpleTextPaster">
@@ -85,7 +85,21 @@
 			<ref bean="colorGreen" />
 		</constructor-arg>
 	</bean>
-
+	
+	<bean id="glyphsPaster" class="com.octo.captcha.component.image.textpaster.GlyphsPaster">
+		<constructor-arg type="java.lang.Integer" index="0">
+			<value>4</value>
+		</constructor-arg>
+		<constructor-arg type="java.lang.Integer" index="1">
+			<value>4</value>
+		</constructor-arg>
+		<constructor-arg index="2">
+			<ref bean="randomListColorGenerator" />
+		</constructor-arg>
+		<!-- <constructor-arg index="3">
+			<ref bean="lineTextDecorator" />
+		</constructor-arg> -->
+	</bean>
 	<bean id="decoratedRandomTextPaster" class="com.octo.captcha.component.image.textpaster.DecoratedRandomTextPaster">
 		<constructor-arg type="java.lang.Integer" index="0">
 			<value>4</value>
@@ -131,21 +145,6 @@
 			<value>true</value>
 		</constructor-arg>
 	</bean>
-	<bean id="doubleRandomTextPaster" class="com.octo.captcha.component.image.textpaster.DoubleRandomTextPaster">
-		<description>非直线帖字器</description>
-		<constructor-arg type="java.lang.Integer" index="0">
-			<value>4</value>
-		</constructor-arg>
-		<constructor-arg type="java.lang.Integer" index="1">
-			<value>4</value>
-		</constructor-arg>
-		<constructor-arg index="2">
-			<ref bean="randomListColorGenerator" />
-		</constructor-arg>
-		<constructor-arg type="java.lang.Boolean" index="3">
-			<value>true</value>
-		</constructor-arg>
-	</bean>
 	<bean id="singleColorGenerator" class="com.octo.captcha.component.image.color.SingleColorGenerator">
 		<description>单一颜色生成器</description>
 		<constructor-arg type="java.awt.Color" index="0">
@@ -167,7 +166,7 @@
 	<bean id="lineTextDecorator" class="com.octo.captcha.component.image.textpaster.textdecorator.LineTextDecorator">
 		<description>干扰线</description>
 		<constructor-arg type="java.lang.Integer" index="0">
-			<value>1</value><!-- 干扰线数量 -->
+			<value>0</value><!-- 干扰线数量 -->
 		</constructor-arg>
 		<constructor-arg  index="1">
 			<ref bean="randomListColorGenerator" /><!-- 干扰线颜色 -->

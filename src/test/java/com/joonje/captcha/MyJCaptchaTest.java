@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.octo.captcha.service.CaptchaService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "file:C:/Users/Anjunjie/git/J2EEFramework/src/main/webapp/WEB-INF/jcaptcha.xml")
+@ContextConfiguration(locations = "file:C:/Users/Anjunjie/git/J2EEFramework/src/main/webapp/WEB-INF/jcaptcha1_0.xml")
 public class MyJCaptchaTest extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	CaptchaService captchaService;
