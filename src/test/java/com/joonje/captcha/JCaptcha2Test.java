@@ -19,7 +19,7 @@ import com.octo.captcha.service.captchastore.FastHashMapCaptchaStore;
 import com.octo.captcha.service.image.DefaultManageableImageCaptchaService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "file:C:/Users/Anjunjie/git/J2EEFramework/src/main/webapp/WEB-INF/jcaptcha2_0.xml")
+@ContextConfiguration(locations = "classpath:jcaptcha2_0.xml")
 public class JCaptcha2Test extends AbstractJUnit4SpringContextTests {
 	@Autowired
 	CaptchaService captchaService;

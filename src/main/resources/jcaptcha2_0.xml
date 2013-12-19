@@ -40,7 +40,7 @@
 	<bean id="wordgen" class="com.octo.captcha.component.word.wordgenerator.RandomWordGenerator">
 		<description>文字产生器</description>
 		<constructor-arg index="0">
-			<value>A</value>
+			<value>ABCDEFGHIJKLMNOPQRSTUVWXYZ</value>
 		</constructor-arg>
 	</bean>
 
@@ -77,9 +77,9 @@
 		class="com.octo.captcha.component.image.deformation.ImageDeformationByBufferedImageOp">
 		<constructor-arg index="0">
 			<list>
-				<!-- <ref bean="pinchFilter1" />
+				<ref bean="pinchFilter1" />
 				<ref bean="pinchFilter2" />
-				<ref bean="pinchFilter3" /> -->
+				<!-- <ref bean="pinchFilter3" /> -->
 			</list>
 		</constructor-arg>
 	</bean>
@@ -94,24 +94,24 @@
 	
 	<bean id="pinchFilter1" class="com.jhlabs.image.PinchFilter">
 		<property name="amount" value="-0.5f"></property>
-		<property name="radius" value="70"></property>
-		<!-- <property name="angle" ></property> -->
+		<property name="radius" value="20"></property>
+		<property name="angle" value="0.1964f"></property>
 		<property name="centreX" value="0.5f"></property>
 		<property name="centreY" value="-0.01f"></property>
 		<property name="edgeAction" value="1"></property>
 	</bean>
 	<bean id="pinchFilter2" class="com.jhlabs.image.PinchFilter">
 		<property name="amount" value="-0.6f"></property>
-		<property name="radius" value="70"></property>
-		<!-- <property name="angle" ></property> -->
+		<property name="radius" value="20"></property>
+		<property name="angle" value="0.1964f"></property>
 		<property name="centreX" value="0.3f"></property>
 		<property name="centreY" value="1.01f"></property>
 		<property name="edgeAction" value="1"></property>
 	</bean>
 	<bean id="pinchFilter3" class="com.jhlabs.image.PinchFilter">
 		<property name="amount" value="-0.6f"></property>
-		<property name="radius" value="70"></property>
-		<!-- <property name="angle" ></property> -->
+		<property name="radius" value="20"></property>
+		<property name="angle" value="0.1964f"></property>
 		<property name="centreX" value="0.8f"></property>
 		<property name="centreY" value="-0.01f"></property>
 		<property name="edgeAction" value="1"></property>
@@ -122,15 +122,15 @@
 	<bean id="fontGenRandom" class="com.octo.captcha.component.image.fontgenerator.RandomFontGenerator">
 		<description>字体生成器</description>
 		<constructor-arg index="0">
-			<value>40</value><!-- 字体最小大小 -->
+			<value>30</value><!-- 字体最小大小 -->
 		</constructor-arg>
 		<constructor-arg index="1">
-			<value>40</value><!-- 字体最大大小 -->
+			<value>30</value><!-- 字体最大大小 -->
 		</constructor-arg>
 		<constructor-arg index="2">
 			<list>
-				<!-- <ref bean="fontArial" />所使用的字体集合
-				<ref bean="fontBellMt" /> -->
+				<!-- <ref bean="fontArial" /> --><!-- 所使用的字体集合 -->
+				<ref bean="fontBellMt" />
 				<ref bean="fontCreditValley" />
 			</list>
 		</constructor-arg>
@@ -141,27 +141,27 @@
 			<value>100</value>
 		</constructor-arg>
 		<constructor-arg index="1">
-			<value>50</value>
+			<value>40</value>
 		</constructor-arg>
 		<constructor-arg index="2">
-			<ref bean="backGroundColorGenerator" />
+			<ref bean="colorWhite" />
 		</constructor-arg>
 	</bean>
 	
 	<bean id="glyphsPaster" class="com.octo.captcha.component.image.textpaster.GlyphsPaster">
 		<constructor-arg type="java.lang.Integer" index="0">
-			<value>1</value>
+			<value>4</value>
 		</constructor-arg>
 		<constructor-arg type="java.lang.Integer" index="1">
-			<value>1</value>
+			<value>4</value>
 		</constructor-arg>
 		<constructor-arg index="2">
-			<ref bean="randomListColorGenerator" />
+			<ref bean="color4" />
 		</constructor-arg>
 		<constructor-arg index="3">
 			<array>
-				<!-- <ref bean="translateGlyphsVerticalRandomVisitor" />
-				<ref bean="overlapGlyphsUsingShapeVisitor" />  -->
+				<ref bean="translateGlyphsVerticalRandomVisitor" />
+				<ref bean="overlapGlyphsUsingShapeVisitor" />
 				<ref bean="translateAllToRandomPointVisitor" /> 
 			</array>
 		</constructor-arg>
@@ -179,7 +179,7 @@
 	</bean>
 	<bean id="overlapGlyphsUsingShapeVisitor" class="com.octo.captcha.component.image.textpaster.glyphsvisitor.OverlapGlyphsUsingShapeVisitor">
 		<constructor-arg type="double" index="0">
-			<value>3</value>
+			<value>1</value>
 		</constructor-arg>
 	</bean>
 	<bean id="translateAllToRandomPointVisitor" class="com.octo.captcha.component.image.textpaster.glyphsvisitor.TranslateAllToRandomPointVisitor">
@@ -227,9 +227,9 @@
 		<constructor-arg index="0">
 			<list>
 				<ref bean="color1" />
-				<!-- <ref bean="color2" /> -->
-				<!-- <ref bean="color3" />
-				<ref bean="color4" /> -->
+				<ref bean="color2" />
+				<ref bean="color3" />
+				<ref bean="color4" />
 			</list>
 		</constructor-arg>
 	</bean>
@@ -239,8 +239,8 @@
 		<constructor-arg index="0">
 			<list>
 				<ref bean="colorGray1" />
-				<!-- <ref bean="colorGray2" />
-				<ref bean="colorGray3" /> -->
+				<ref bean="colorGray2" />
+				<ref bean="colorGray3" />
 			</list>
 		</constructor-arg>
 	</bean>
@@ -252,7 +252,7 @@
 			<value>0</value>
 		</constructor-arg>
 		<constructor-arg index="2">
-			<value>20</value>
+			<value>40</value>
 		</constructor-arg>
 	</bean>
 	<bean id="fontBellMt" class="java.awt.Font">
@@ -263,7 +263,7 @@
 			<value>0</value>
 		</constructor-arg>
 		<constructor-arg index="2">
-			<value>20</value>
+			<value>40</value>
 		</constructor-arg>
 	</bean>
 	<bean id="fontCreditValley" class="java.awt.Font">
@@ -274,7 +274,7 @@
 			<value>0</value>
 		</constructor-arg>
 		<constructor-arg index="2">
-			<value>20</value>
+			<value>40</value>
 		</constructor-arg>
 	</bean>
 	<bean id="colorWhite" class="java.awt.Color">
