@@ -1,7 +1,6 @@
 package com.joonje.captcha;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Date;
 
 import javax.imageio.ImageIO;
 
@@ -12,7 +11,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.octo.captcha.engine.CaptchaEngine;
 import com.octo.captcha.service.CaptchaService;
 import com.octo.captcha.service.captchastore.CaptchaStore;
 import com.octo.captcha.service.captchastore.FastHashMapCaptchaStore;

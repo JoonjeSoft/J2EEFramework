@@ -8,7 +8,6 @@ import javax.imageio.ImageIO;
 import org.junit.Test;
 
 import com.octo.captcha.engine.CaptchaEngine;
-import com.octo.captcha.engine.image.gimpy.SimpleListImageCaptchaEngine;
 import com.octo.captcha.service.multitype.GenericManageableCaptchaService;
 
 public class EngineTest {
