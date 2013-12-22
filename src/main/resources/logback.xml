@@ -13,7 +13,7 @@
 		</encoder>
 	</appender>
 	<appender name="Logs-all" class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>E:/temp/logs/Logs-all.log</file>
+		<file>logs/Logs-all.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>E:/temp/logs/Logs-all.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
 			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
@@ -31,7 +31,7 @@
 				<pattern>%relative%thread%mdc%level%logger%msg</pattern>
 			</layout>
 		</encoder>
-		<file>Logs-all.html</file>
+		<file>logs/Logs-all.html</file>
 	</appender>
 
 	<logger name="com.joonje" additivity="true">
