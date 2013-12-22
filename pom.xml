@@ -203,9 +203,9 @@
 					<stopKey>web</stopKey>
 					<stopPort>9999</stopPort>
 					<webAppConfig>
-						<contextPath>/web</contextPath>
-						<defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
-						<descriptor>src/main/webapp/WEB-INF/web.xml</descriptor>
+						<contextPath>/joonje</contextPath>
+						<!-- <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
+						<descriptor>src/main/webapp/WEB-INF/web.xml</descriptor> -->
 						<!-- <descriptor>src/main/webapp/WEB-INF/annotation-web.xml</descriptor> -->
 						<!-- <overrideDescriptor>src/main/resources/override-web.xml</overrideDescriptor> -->
 					</webAppConfig>
