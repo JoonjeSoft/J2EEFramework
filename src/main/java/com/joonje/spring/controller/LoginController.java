@@ -11,42 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.joonje.model.User;
 import com.octo.captcha.service.image.ImageCaptchaService;
 
 @Controller
-public class IndexController {
+public class LoginController {
 
 	@Resource
 	private ImageCaptchaService imageCaptchaService;
-
-	public ImageCaptchaService getImageCaptchaService() {
-		return imageCaptchaService;
-	}
 
 	public void setImageCaptchaService(ImageCaptchaService imageCaptchaService) {
 		this.imageCaptchaService = imageCaptchaService;
 	}
 
-	@RequestMapping(value = { "/index/add" }, method = RequestMethod.GET)
-	@ResponseBody
-	public User index() {
-		User user = new User();
-		user.setId("1");
-		user.setName("安俊杰");
-		user.setPassword("123456");
-		return user;
-	}
-
-	@RequestMapping(value = { "/index/delete" }, method = RequestMethod.GET)
-	@ResponseBody
-	public String delete() {
-		return "安俊杰";
-	}
-
-	@RequestMapping(value = { "/index/code" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/login/code" }, method = RequestMethod.GET)
 	public void code(HttpServletRequest request, HttpServletResponse response) {
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "No-cache");
