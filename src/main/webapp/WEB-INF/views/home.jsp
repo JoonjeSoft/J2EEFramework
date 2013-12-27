@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="GB18030"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
@@ -17,36 +17,19 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 <meta http-equiv="description" content="This is my page">
-<link href="resources/bootstrap/3.0.3/css/bootstrap.css"
+<link href="http://v3.bootcss.com/dist/css/bootstrap.min.css"
 	rel="stylesheet">
 <script src="resources/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <script src="resources/bootstrap/3.0.3/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-	<div class="container">
-		<form class="form-horizontal" style="max-width: 330px;padding: 15px;margin: 0 auto;" role="form">
-			<div class="form-group" >
-				<div class="input-group input-group-lg" style="width:100%">
-					<span class="input-group-addon glyphicon glyphicon-user"></span> <input
-						type="email" class="form-control" id="exampleInputEmail1" 
-						placeholder="Enter email">
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="input-group input-group-lg" style="width:100%">
-					<span class="input-group-addon glyphicon glyphicon-lock"></span><input
-						type="password" class="form-control" id="exampleInputPassword1"
-						placeholder="Password">
-				</div>
-			</div>
-			<div class="checkbox">
-				<label> <input type="checkbox"> ¼Ç×¡ÎÒ
-				</label>
-			</div>
-			<button type="submit" class="btn btn-lg btn-primary btn-block">µÇÂ¼</button>
-		</form>
-	</div>
+		<p class="bg-muted">abcd</p>
+		<p class="bg-primary">...</p>
+		<p class="bg-success">...</p>
+		<p class="bg-info">...</p>
+		<p class="bg-warning">...</p>
+		<p class="bg-danger">...</p>
 </body>
 
 </html>
