@@ -6,7 +6,7 @@
 				<expression>logger.contains("joonje")</expression>
 			</evaluator>
 			<OnMismatch>NEUTRAL</OnMismatch>
-			<OnMatch>DENY</OnMatch>
+			<OnMatch>NEUTRAL</OnMatch>
 		</filter>
 		<encoder charset="UTF-8">
 			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{300} - %msg%n </pattern>
@@ -15,11 +15,11 @@
 	<appender name="Logs-all" class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>logs/Logs-all.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>E:/temp/logs/Logs-all.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
-			<timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-				<!-- or whenever the file size reaches 100MB -->
-				<maxFileSize>100MB</maxFileSize>
-			</timeBasedFileNamingAndTriggeringPolicy>
+			<fileNamePattern>logs/Logs-all.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+			<!-- <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				or whenever the file size reaches 100MB
+				<maxFileSize>1MB</maxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy> -->
 		</rollingPolicy>
 		<encoder charset="UTF-8">
 			<pattern>%-1relative - %d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} -- %msg%n</pattern>
@@ -34,7 +34,7 @@
 		<file>logs/Logs-all.html</file>
 	</appender>
 
-	<logger name="com.joonje" additivity="true">
+	<logger name="com.joonje" additivity="false">
 		<level value="INFO" />
 		<appender-ref ref="Logs-all" />
 		<appender-ref ref="HTML" />

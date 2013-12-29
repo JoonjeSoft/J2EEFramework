@@ -8,6 +8,8 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +18,7 @@ import com.octo.captcha.service.image.ImageCaptchaService;
 
 @Controller
 public class LoginController {
-
+	private final static Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Resource
 	private ImageCaptchaService imageCaptchaService;
 
@@ -26,6 +28,18 @@ public class LoginController {
 
 	@RequestMapping(value = { "/login/code" }, method = RequestMethod.GET)
 	public void code(HttpServletRequest request, HttpServletResponse response) {
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "No-cache");
 		response.setDateHeader("Expires", 0);
