@@ -4,4 +4,5 @@
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
 	<import resource="jcaptcha/jcaptcha2_0.xml" />
+	<import resource="shiro/spring-shiro.xml" />
 </beans>
