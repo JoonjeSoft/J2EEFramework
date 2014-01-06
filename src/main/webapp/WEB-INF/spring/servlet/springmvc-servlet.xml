@@ -66,7 +66,7 @@
 		</property>
 		<property name="packagesToScan">
 			<list>
-				<value>com.anjunjie.entity</value>
+				<value>com.joonje.model</value>
 			</list>
 		</property>
 

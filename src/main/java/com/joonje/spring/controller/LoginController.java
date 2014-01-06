@@ -28,18 +28,7 @@ public class LoginController {
 
 	@RequestMapping(value = { "/login/code" }, method = RequestMethod.GET)
 	public void code(HttpServletRequest request, HttpServletResponse response) {
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
-		logger.info("captcha captchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptchacaptcha");
+		logger.info("");
 		response.setHeader("Pragma", "No-cache");
 		response.setHeader("Cache-Control", "No-cache");
 		response.setDateHeader("Expires", 0);

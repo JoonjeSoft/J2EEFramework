@@ -19,32 +19,23 @@
 	<repositories>
 		<!-- <repository> <id>hibernate-repo</id> <name>JBoss Nexus</name> <url>https://repository.jboss.org/nexus/content/groups/public/org/hibernate</url> 
 			</repository> -->
-		<!--<repository>
-			<id>3rd-party</id>
-			<name>3rd-party</name>
-			<url>http://forge.octo.com/archiva/repository/3rd-party</url>
-		</repository>-->
-		 <!-- <repository>
-			<id>atlassian-m2-contrib</id>
-			<name>atlassian-m2-contrib</name>
-			<url>http://svn.atlassian.com/svn/public/contrib/repository/maven2</url>
-		</repository> -->
-		<!-- <repository>    
-			<id>atlassian-m2-repository</id>
-			<name>atlassian-m2-repository</name>
-			<url>http://repository.atlassian.com/maven2</url>
-		</repository>  --> 
-		<repository>  
+		<!--<repository> <id>3rd-party</id> <name>3rd-party</name> <url>http://forge.octo.com/archiva/repository/3rd-party</url> 
+			</repository> -->
+		<!-- <repository> <id>atlassian-m2-contrib</id> <name>atlassian-m2-contrib</name> <url>http://svn.atlassian.com/svn/public/contrib/repository/maven2</url> 
+			</repository> -->
+		<!-- <repository> <id>atlassian-m2-repository</id> <name>atlassian-m2-repository</name> <url>http://repository.atlassian.com/maven2</url> 
+			</repository> -->
+		<repository>
 			<id>jahia-repository</id>
 			<name>jahia-repository</name>
 			<url>http://maven.jahia.org/maven2/</url>
-		</repository> 
-		<repository>  
+		</repository>
+		<repository>
 			<id>sonatype-repository</id>
 			<name>sonatype-repository</name>
 			<url>http://oss.sonatype.org/content/groups/sourceforge/</url>
-		</repository>   
-	</repositories>  
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -202,6 +193,11 @@
 			<artifactId>shiro-ehcache</artifactId>
 			<version>1.2.2</version>
 		</dependency>
+		<dependency>
+			<groupId>com.googlecode.log4jdbc</groupId>
+			<artifactId>log4jdbc</artifactId>
+			<version>1.2</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>J2EEFramework</finalName>
@@ -219,8 +215,7 @@
 					<stopPort>9999</stopPort>
 					<webAppConfig>
 						<contextPath>/joonje</contextPath>
-						<!-- <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
-						<descriptor>src/main/webapp/WEB-INF/web.xml</descriptor> -->
+						<!-- <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor> <descriptor>src/main/webapp/WEB-INF/web.xml</descriptor> -->
 						<!-- <descriptor>src/main/webapp/WEB-INF/annotation-web.xml</descriptor> -->
 						<!-- <overrideDescriptor>src/main/resources/override-web.xml</overrideDescriptor> -->
 					</webAppConfig>
@@ -260,6 +255,27 @@
 					<!-- <useTestClasspath>false</useTestClasspath> -->
 					<!-- optional if you want to add some extra directories into the classloader -->
 					<!-- <additionalClasspathDirs> <additionalClasspathDir></additionalClasspathDir> </additionalClasspathDirs> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.2.1</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>java</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<mainClass>org.h2.tools.Server</mainClass>
+					<arguments>
+						<argument>-web</argument>
+						<argument>-webPort</argument>
+						<argument>8090</argument>
+						<argument>-browser</argument>
+					</arguments>
 				</configuration>
 			</plugin>
 		</plugins>
