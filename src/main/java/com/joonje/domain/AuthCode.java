@@ -1,4 +1,4 @@
-package com.joonje.model;
+package com.joonje.domain;
 public class AuthCode {
 	
 }

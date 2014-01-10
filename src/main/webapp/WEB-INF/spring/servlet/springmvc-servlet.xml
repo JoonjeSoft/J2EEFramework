@@ -26,7 +26,7 @@
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-	
+
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
@@ -69,22 +69,51 @@
 				<value>com.joonje.model</value>
 			</list>
 		</property>
-
 	</bean>
-
+	
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="myDataSource" />
+<!-- 		<property name="persistenceXmlLocation" value="chapter8/persistence.xml" />
+		<property name="persistenceUnitName" value="persistenceUnit" /> -->
+		<property name="persistenceProvider" ref="persistenceProvider" />
+		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
+		<property name="jpaDialect" ref="jpaDialect" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.show_sql">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<bean id="persistenceProvider" class="org.hibernate.ejb.HibernatePersistence" />
+	<bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+	   <property name="generateDdl" value="false" />
+	   <property name="database" value="HSQL"/>
+	</bean>
+	<bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.HibernateJpaDialect"/>
+	
+	<!-- Spring Data Jpa配置, 扫描base-package下所有继承于Repository<T,ID>的接口 -->
+ 	<jpa:repositories base-package="com.joonje.domain" transaction-manager-ref="transactionManager" entity-manager-factory-ref="entityManagerFactory"/>
+	
+	<!-- Jpa 事务配置 -->
+	<bean id="jpaTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>
+	
+	
 	<!-- 定义事务管理器（声明式的事务） -->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+	<tx:advice id="txAdvice" transaction-manager="jpaTransactionManager">
 		<tx:attributes>
 			<tx:method name="*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 
 	<aop:config>
-		<aop:pointcut id="transactionPointCuts" expression="execution(* com.anjunjie.dao.*.*(..))" />
+		<aop:pointcut id="transactionPointCuts" expression="execution(* com.joonje.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="transactionPointCuts" />
 	</aop:config>
 	<import resource="controllers.xml" />

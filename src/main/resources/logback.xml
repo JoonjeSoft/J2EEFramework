@@ -37,6 +37,9 @@
 	<logger name="org.apache.shiro" additivity="false">
 		<appender-ref ref="stdout" />
 	</logger>
+	<logger name="jdbc.sqltiming" level="INFO">
+		<appender-ref ref="stdout" />
+	</logger>
 	<root level="DEBUG">
 		<appender-ref ref="stdout" />
 	</root>
