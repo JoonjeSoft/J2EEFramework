@@ -8,17 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.joonje.domain.User;
-import com.joonje.repository.UserDao;
+import com.joonje.repository.IUserDao;
 
 @Controller
 @RequestMapping(value="/user")
 public class UserController {
 	@Autowired
-	private UserDao userDao;
-	public UserDao getUserDao() {
+	private IUserDao userDao;
+	public IUserDao getUserDao() {
 		return userDao;
 	}
-	public void setUserDao(UserDao userDao) {
+	public void setUserDao(IUserDao userDao) {
 		this.userDao = userDao;
 	}
 	@RequestMapping(value="/add")
@@ -33,6 +33,6 @@ public class UserController {
 	}
 	@RequestMapping(value="/query")
 	public @ResponseBody List<User> query() {
-		return userDao.query();
+		return (List<User>)userDao.findAll();
 	}
 }
