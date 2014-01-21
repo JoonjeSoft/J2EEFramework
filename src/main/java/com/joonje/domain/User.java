@@ -1,15 +1,15 @@
 package com.joonje.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class User {
-	@Id
-	private String id;
+public class User extends IdEntity {
 	private String name;
 	private String password;
 	private String sex;
+	@ManyToOne
+	private Role role;
 
 	public String getSex() {
 		return sex;
@@ -17,14 +17,6 @@ public class User {
 
 	public void setSex(String sex) {
 		this.sex = sex;
-	}
-
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -41,6 +33,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }
