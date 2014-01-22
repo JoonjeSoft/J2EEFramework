@@ -1,6 +1,8 @@
 package com.joonje.spring.controller;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,15 +35,19 @@ public class UserController {
 	}
 	@RequestMapping(value="/add")
 	public void add() {
+		Random rm = new Random();
 		Role role = new Role();
-		role.setName("¹ÜÀíÔ±");
+		role.setName("ç®¡ç†å‘˜");
 		roleDao.save(role);
 		for(int i=0;i<10;i++) {
+			int rInt = rm.nextInt(1);
 			User user = new User();
 			user.setId(String.valueOf(i));
 			user.setName("user"+i);
 			user.setPassword("password"+i);
 			user.setRole(role);
+			user.setSex(rInt==1?"ç”·":"å¥³");
+			user.setCreateDate(new Date());
 			userDao.save(user);
 		}
 	}

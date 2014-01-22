@@ -1,14 +1,23 @@
 package com.joonje.domain;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User extends IdEntity {
 	private String name;
 	private String password;
 	private String sex;
+	
+	@JsonFormat(pattern = "yyyy-MM-dd HH-mm-ss")
+	private Date createDate;
 	@ManyToOne
+	@JsonIgnore
 	private Role role;
 
 	public String getSex() {
@@ -33,6 +42,14 @@ public class User extends IdEntity {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 	public Role getRole() {
