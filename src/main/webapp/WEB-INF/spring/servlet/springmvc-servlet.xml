@@ -20,6 +20,7 @@
 						<property name="failOnEmptyBeans" value="false" />
 					</bean>
 				</property>
+				<property name="prettyPrint" value="true" />
 			</bean>
 		</mvc:message-converters>
 	</mvc:annotation-driven>
