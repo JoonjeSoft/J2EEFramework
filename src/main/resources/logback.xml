@@ -1,34 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
-		<!-- <filter class="ch.qos.logback.core.filter.EvaluatorFilter"> <evaluator> <expression>logger.contains("joonje")</expression> 
-			</evaluator> <OnMismatch>NEUTRAL</OnMismatch> <OnMatch>NEUTRAL</OnMatch> </filter> -->
+		<!-- <filter class="ch.qos.logback.core.filter.EvaluatorFilter"> <evaluator> 
+			<expression>logger.contains("joonje")</expression> </evaluator> <OnMismatch>NEUTRAL</OnMismatch> 
+			<OnMatch>NEUTRAL</OnMatch> </filter> -->
 		<encoder charset="UTF-8">
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{300} - %msg%n </pattern>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{300} - %msg%n
+			</pattern>
 		</encoder>
 	</appender>
-	<appender name="html" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<appender name="html"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<file>logs/JoonjeSoft.html</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-			<fileNamePattern>logs/JoonjeSoft.%d{yyyy-MM-dd}.html.zip</fileNamePattern>
+			<fileNamePattern>logs/JoonjeSoft.%d{yyyy-MM-dd}.html.zip
+			</fileNamePattern>
 			<!-- <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP"> 
 				or whenever the file size reaches 100MB <maxFileSize>1MB</maxFileSize> </timeBasedFileNamingAndTriggeringPolicy> -->
 		</rollingPolicy>
-		<encoder charset="UTF-8" class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		<encoder charset="UTF-8"
+			class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
 			<layout class="ch.qos.logback.classic.html.HTMLLayout">
-				<!-- <pattern>%-1relative - %d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} - %msg%n</pattern> -->
+				<!-- <pattern>%-1relative - %d{HH:mm:ss.SSS} [%thread] %-5level %logger{0} 
+					- %msg%n</pattern> -->
 				<pattern>%relative%thread%mdc%level%logger%msg</pattern>
 			</layout>
 		</encoder>
 	</appender>
-	<!-- <appender name="HTML" class="ch.qos.logback.core.FileAppender">
-		<encoder charset="UTF-8" class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-			<layout class="ch.qos.logback.classic.html.HTMLLayout">
-				<pattern>%relative%thread%mdc%level%logger%msg</pattern>
-			</layout>
-		</encoder>
-		<file>logs/Logs-all.html</file>
-	</appender> -->
+	<!-- <appender name="HTML" class="ch.qos.logback.core.FileAppender"> <encoder 
+		charset="UTF-8" class="ch.qos.logback.core.encoder.LayoutWrappingEncoder"> 
+		<layout class="ch.qos.logback.classic.html.HTMLLayout"> <pattern>%relative%thread%mdc%level%logger%msg</pattern> 
+		</layout> </encoder> <file>logs/Logs-all.html</file> </appender> -->
 
 	<logger name="com.joonje" additivity="false">
 		<level value="INFO" />
