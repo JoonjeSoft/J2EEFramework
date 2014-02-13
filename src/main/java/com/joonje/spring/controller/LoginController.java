@@ -15,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.octo.captcha.service.image.ImageCaptchaService;
-
+/**
+ * @author Anjunjie
+ *
+ */
 @Controller
 public class LoginController {
 	private final static Logger logger = LoggerFactory.getLogger(LoginController.class);

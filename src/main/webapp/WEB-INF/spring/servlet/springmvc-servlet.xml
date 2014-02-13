@@ -18,6 +18,13 @@
 				<property name="objectMapper">
 					<bean class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
 						<property name="failOnEmptyBeans" value="false" />
+						<property name="objectMapper">
+							<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+								<property name="filters">
+									<bean class="com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider"></bean>
+								</property>
+							</bean>
+						</property>
 					</bean>
 				</property>
 				<property name="prettyPrint" value="true" />
