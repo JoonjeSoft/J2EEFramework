@@ -7,10 +7,14 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -20,7 +24,6 @@ import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.joonje.domain.Role;
 import com.joonje.domain.User;
 import com.joonje.repository.IRoleDao;
-import com.joonje.repository.IUserDao;
 import com.joonje.service.UserService;
 
 @Controller
@@ -47,7 +50,16 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public String login() {
+		return "login";
+	}
+	@RequestMapping(method = RequestMethod.POST)
+	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model) {
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
+		return "login";
+	}
 	@RequestMapping(value = "/add")
 	public void add() {
 		Random rm = new Random();
@@ -58,13 +70,17 @@ public class UserController {
 			int rInt = rm.nextInt(1);
 			User user = new User();
 			user.setId(String.valueOf(i));
-			user.setName("");
+			user.setName("user"+i);
 			user.setPassword("password" + i);
 			user.setRole(role);
 			user.setSex(rInt == 1 ? "男" : "女");
 			user.setCreateDate(new Date());
 			userService.add(user);
 		}
+	}
+	@RequestMapping(value = "/delete")
+	public void delete() {
+		userService.deleteAll();
 	}
 
 	@RequestMapping(value = "/query")

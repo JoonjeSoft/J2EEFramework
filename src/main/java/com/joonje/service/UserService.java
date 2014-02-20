@@ -32,4 +32,8 @@ public class UserService {
 	public User add(User user) {
 		return userDao.save(user);
 	}
+	
+	public void deleteAll(){
+		userDao.deleteAll();
+	}
 }

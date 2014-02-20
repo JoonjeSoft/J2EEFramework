@@ -16,6 +16,7 @@
 		<property name="filterChainDefinitions">
 			<value>
 				# some example chain definitions:
+				/user/** = authc
 				/admin/** = authc, roles[admin]
 				#/docs/** = authc,
 				#perms[document:read]
