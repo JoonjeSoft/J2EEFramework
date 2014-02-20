@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -20,12 +21,13 @@ import com.joonje.domain.Role;
 import com.joonje.domain.User;
 import com.joonje.repository.IRoleDao;
 import com.joonje.repository.IUserDao;
+import com.joonje.service.UserService;
 
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
 	@Autowired
-	private IUserDao userDao;
+	private UserService userService;
 	@Autowired
 	private IRoleDao roleDao;
 
@@ -37,12 +39,13 @@ public class UserController {
 		this.roleDao = roleDao;
 	}
 
-	public IUserDao getUserDao() {
-		return userDao;
+
+	public UserService getUserService() {
+		return userService;
 	}
 
-	public void setUserDao(IUserDao userDao) {
-		this.userDao = userDao;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
 	}
 
 	@RequestMapping(value = "/add")
@@ -55,24 +58,28 @@ public class UserController {
 			int rInt = rm.nextInt(1);
 			User user = new User();
 			user.setId(String.valueOf(i));
-			user.setName("user" + i);
+			user.setName("");
 			user.setPassword("password" + i);
 			user.setRole(role);
 			user.setSex(rInt == 1 ? "男" : "女");
 			user.setCreateDate(new Date());
-			userDao.save(user);
+			userService.add(user);
 		}
 	}
 
 	@RequestMapping(value = "/query")
 	public @ResponseBody
 	List<User> query() {
-		return (List<User>) userDao.findAll();
+		return (List<User>) userService.findAll();
 	}
 
+	@RequestMapping(value="/query/{value}")
+	public void test(@PathVariable("value") String value) {
+		System.out.println(value);
+	}
 	@RequestMapping(value = "/querys")
 	public void querySpec(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<User> users = (List<User>) userDao.findAll();
+		List<User> users = (List<User>) userService.findAll();
 		ObjectMapper mapper = new ObjectMapper();
 		// first, construct filter provider to exclude all properties but
 		// 'name', bind it as 'myFilter'
