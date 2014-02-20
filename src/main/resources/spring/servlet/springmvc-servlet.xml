@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+      					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+      					http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+       					http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+        				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        				http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.3.xsd">
+
+	<import resource="controllers.xml" />
+	<import resource="interceptors.xml" />
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean
+						class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
+						<property name="failOnEmptyBeans" value="false" />
+						<property name="serializationInclusion" value="NON_EMPTY" />
+						<property name="modules">
+							<list>
+								<ref bean="myModule" />
+							</list>
+						</property>
+					</bean>
+				</property>
+				<property name="prettyPrint" value="true" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+	<bean id="myModule" class="com.joonje.util.jackson.modules.MyModule"></bean>
+
+</beans>
