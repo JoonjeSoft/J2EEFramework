@@ -6,8 +6,8 @@
 		<property name="securityManager" ref="securityManager" />
 		<!-- override these for application-specific URLs if you like: -->
 		<property name="loginUrl" value="/login" />
-		<property name="successUrl" value="home" />
-		<property name="unauthorizedUrl" value="error" />
+		<property name="successUrl" value="/" />
+		<property name="unauthorizedUrl" value="/error" />
 		<!-- The 'filters' property is not necessary since any declared javax.servlet.Filter bean -->
 		<!-- defined will be automatically acquired and available via its beanName in chain -->
 		<!-- definitions, but you can perform instance overrides or name aliases here if you like: -->
@@ -16,8 +16,10 @@
 		<property name="filterChainDefinitions">
 			<value>
 				# some example chain definitions:
-				/user/** = authc
-				/admin/** = authc, roles[admin]
+				/login = authc
+				/error = anon
+				/** = user
+				#/admin/** = authc, roles[admin]
 				#/docs/** = authc,
 				#perms[document:read]
 				#/** = authc

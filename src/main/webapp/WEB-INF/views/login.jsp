@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<form method="post" action="user">
+	<form method="post" action="login">
 		<input type="text" id="username" name="username" />
 		 <input type="password" id="password" name="password" />
 		 <input type="checkbox" id="rememberMe" name="rememberMe" /> 

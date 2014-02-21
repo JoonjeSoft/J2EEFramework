@@ -51,15 +51,15 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public String login() {
-		return "login";
-	}
-	@RequestMapping(method = RequestMethod.POST)
-	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model) {
-		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
-		return "login";
-	}
+//	@RequestMapping(method = RequestMethod.GET)
+//	public String login() {
+//		return "login";
+//	}
+//	@RequestMapping(method = RequestMethod.POST)
+//	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model) {
+//		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
+//		return "login";
+//	}
 	@RequestMapping(value = "/add")
 	public void add() {
 		Random rm = new Random();
