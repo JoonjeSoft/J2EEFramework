@@ -55,11 +55,11 @@ public class UserController {
 //	public String login() {
 //		return "login";
 //	}
-//	@RequestMapping(method = RequestMethod.POST)
-//	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model) {
-//		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
-//		return "login";
-//	}
+	@RequestMapping(method = RequestMethod.POST)
+	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName, Model model) {
+		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
+		return "error";
+	}
 	@RequestMapping(value = "/add")
 	public void add() {
 		Random rm = new Random();

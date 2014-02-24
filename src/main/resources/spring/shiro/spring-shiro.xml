@@ -18,12 +18,14 @@
 				# some example chain definitions:
 				/login = authc
 				/error = anon
-				/** = user
-				#/admin/** = authc, roles[admin]
+				/** = authc
+				#/admin/** = authc,
+				#roles[admin]
 				#/docs/** = authc,
 				#perms[document:read]
 				#/** = authc
-				# more URL-to-FilterChain definitions here
+				# more URL-to-FilterChain
+				#definitions here
 			</value>
 		</property>
 	</bean>
@@ -53,6 +55,6 @@
 	</bean>
 	<!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
 	<!-- security datasource: -->
-	<bean id="myRealm" class="com.joonje.security.MyJDBCRealm" />
-
+	<bean id="myRealm" class="com.joonje.security.MyJDBCRealm"/>
+		<!-- <property name="userService" ref="userService" /> -->
 </beans>
