@@ -12,7 +12,4 @@
 	<mvc:view-controller path="/login" view-name="login"/>
 	<mvc:view-controller path="/error" view-name="error"/>
 	<context:component-scan base-package="com.joonje.spring.controller" />
-	<context:component-scan base-package="com.joonje.service" />
-	<context:component-scan base-package="com.joonje.dao" />
-	<context:component-scan base-package="com.joonje.security" /> 
 </beans>

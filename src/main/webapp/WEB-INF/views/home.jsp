@@ -23,12 +23,42 @@
 </head>
 
 <body>
-	<p class="bg-muted">abcd</p>
-	<p class="bg-primary">...</p>
-	<p class="bg-success">...</p>
-	<p class="bg-info">...</p>
-	<p class="bg-warning">...</p>
-	<p class="bg-danger">...</p>
+	<div class="container">
+		<form class="form-horizontal" role="form" action="/">
+			 <div class="form-group">
+    			<label for="username" class="col-md-2 control-label">用户名</label>
+    			<div class="col-md-10">
+    				<input type="text" class="form-control" id="username" name="username" placeholder="输入用户名">
+    			</div>
+  			</div>
+  			<div class="form-group">
+    			<label for="password" class="col-md-2 control-label">密码</label>
+    			<div class="col-md-10">
+    				<input type="password" class="form-control" id="password" placeholder="输入密码">
+    			</div>
+  			</div>
+  			<div class="form-group">
+    			<div class="col-md-offset-2 col-md-10">
+		  			<div class="checkbox">
+					    <label>
+					      <input type="checkbox" name="rememberMe"> 记住我
+					    </label>
+				  	</div>
+			  	</div>
+		  	</div>
+		  	<div class="form-group">
+			  	<div class="input-group input-group-lg">
+	  				<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+	  				<input type="text" name="username1" class="form-control" placeholder="Username">
+				</div>
+			</div>
+		  	<div class="form-group">
+    			<div class="col-md-offset-2 col-md-10">
+  					<button type="submit" class="btn btn-default">登陆</button>
+  				</div>
+  			</div>
+		</form>
+	</div>
 </body>
 
 </html>
