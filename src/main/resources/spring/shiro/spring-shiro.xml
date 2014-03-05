@@ -17,7 +17,11 @@
 			<value>
 				# some example chain definitions:
 				/login = authc
-				/error = anon
+				/login/code = anon
+				/logout = logout
+				/resources/**=anon
+				#/error = anon
+				
 				/** = authc
 				#/admin/** = authc,
 				#roles[admin]

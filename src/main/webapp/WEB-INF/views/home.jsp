@@ -25,58 +25,8 @@
 </head>
 
 <body>
-	<div id="login_top">
-		<img alt="JoonjeSoft" src="resources/images/joonje.png" />
-	</div>
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
-				<div class="panel panel-primary">
-					<div class="panel-heading">系统登录</div>
-					<div class="panel-body">
-						<form class="form-horizontal" role="form" action="/">
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="glyphicon glyphicon-user"></span></span> <input type="text"
-											name="username1" class="form-control" placeholder="请输入用户名">
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="input-group">
-										<span class="input-group-addon"><span
-											class="glyphicon glyphicon-lock"></span></span> <input
-											type="password" name="password" class="form-control"
-											placeholder="请输入密码">
-									</div>
-								</div>
-							</div>
-
-							<div class="form-group">
-								<div class="col-md-12">
-									<div class="checkbox">
-										<label> <input type="checkbox" name="rememberMe">
-											记住我
-										</label>
-									</div>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-md-12">
-									<button type="submit" class="btn btn-primary">登陆</button>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+		<a class="btn btn-primary" href="logout" role="button">退出</a>
 	</div>
 </body>
 

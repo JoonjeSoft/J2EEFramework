@@ -141,7 +141,7 @@
 			<value>100</value>
 		</constructor-arg>
 		<constructor-arg index="1">
-			<value>40</value>
+			<value>34</value>
 		</constructor-arg>
 		<constructor-arg index="2">
 			<ref bean="colorWhite" />
