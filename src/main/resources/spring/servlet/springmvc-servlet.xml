@@ -13,6 +13,7 @@
 	<import resource="controllers.xml" />
 	<import resource="interceptors.xml" />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/js/" mapping="/js/**" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

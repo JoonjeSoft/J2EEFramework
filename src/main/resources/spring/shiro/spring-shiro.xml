@@ -18,6 +18,7 @@
 				# some example chain definitions:
 				/login = authc
 				/login/code = anon
+				/js/** = anon
 				/logout = logout
 				/resources/**=anon
 				#/error = anon

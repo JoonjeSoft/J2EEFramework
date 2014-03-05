@@ -1,7 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
+			+ request.getServerPort() + path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -16,28 +17,18 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="keywords" content="JoonjeSoft login">
 <meta http-equiv="description" content="login page">
-<link href="resources/bootstrap/3.0.3/css/bootstrap.min.css"
+<link href="resources/bootstrap/3.1.1/css/bootstrap.min.css"
 	rel="stylesheet">
 <link href="resources/css/login.css" rel="stylesheet">
-<link href="resources/css/home.css" rel="stylesheet">
 <script src="resources/jquery/1.10.2/jquery-1.10.2.min.js"></script>
-<script src="resources/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script>
-function refreshCaptcha() {
-	var now = new Date();
-	var time = now.getTime();
-	$('#captchaImg').attr('src', 'login/code?time=' + time);
-}
-</script>
+<script src="resources/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="js/joonje.js"></script>
 </head>
 
 <body>
 	<div class="container">
 		<div class="row">
-			<div class="col-md-12"></div>
-		</div>
-		<div class="row">
-			<div class="col-md-4 col-md-offset-4">
+			<div class="col-md-4 col-sm-4 col-md-offset-4 col-sm-offset-4">
 				<div id="loginPanel" class="panel panel-primary">
 					<div class="panel-heading">系统登录</div>
 					<div class="panel-body">
@@ -69,7 +60,8 @@ function refreshCaptcha() {
 										placeholder="验证码">
 								</div>
 								<div class="col-md-5">
-									<img id="captchaImg"  alt="点击刷新"  src="login/code" onclick="refreshCaptcha()"/>
+									<img id="captchaImg" alt="点击刷新" src="login/code"
+										onclick="refreshCaptcha()" />
 								</div>
 							</div>
 							<div class="form-group">
@@ -83,7 +75,7 @@ function refreshCaptcha() {
 							</div>
 							<div class="form-group">
 								<div class="col-md-12">
-									<button type="submit" class="btn btn-primary btn-block">登陆</button>
+									<button type="submit" class="btn btn-primary btn-block" data-loading-text="正在登录...">登陆</button>
 								</div>
 							</div>
 						</form>
