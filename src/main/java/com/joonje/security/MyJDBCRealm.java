@@ -8,11 +8,9 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UnknownAccountException;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.joonje.domain.User;
@@ -47,6 +45,9 @@ public class MyJDBCRealm extends AuthorizingRealm{
 		String captcha = usernamePasswordToken.getCaptcha();
 		String sessionId = (String)SecurityUtils.getSubject().getSession().getId();
 		boolean isValidate = imageCaptchaService.validateResponseForID(sessionId, captcha);
+		if(!isValidate) {
+			
+		}
 		String userName = usernamePasswordToken.getUsername();
 		User user = userService.findUserByName(userName);
 		if(user==null) {

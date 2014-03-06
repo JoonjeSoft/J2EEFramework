@@ -21,6 +21,7 @@ import com.octo.captcha.service.image.ImageCaptchaService;
  */
 @Controller
 public class LoginController {
+	@SuppressWarnings("unused")
 	private final static Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Resource
 	private ImageCaptchaService imageCaptchaService;
