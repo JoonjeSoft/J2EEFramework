@@ -56,7 +56,7 @@
 							<div class="form-group">
 								<div class="col-md-7">
 									<label class="sr-only" for="captcha">验证码</label> <input
-										type="text" class="form-control" id="captcha"
+										type="text" class="form-control" id="captcha" name="captcha"
 										placeholder="验证码">
 								</div>
 								<div class="col-md-5">

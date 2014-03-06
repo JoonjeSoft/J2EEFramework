@@ -1,5 +1,8 @@
 package com.joonje.security;
 
+import javax.annotation.Resource;
+
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -9,15 +12,22 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.web.util.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.joonje.domain.User;
 import com.joonje.service.UserService;
+import com.octo.captcha.service.image.ImageCaptchaService;
 
 public class MyJDBCRealm extends AuthorizingRealm{
 	@Autowired
 	private UserService userService;
+	@Resource
+	private ImageCaptchaService imageCaptchaService;
 	
+	public void setImageCaptchaService(ImageCaptchaService imageCaptchaService) {
+		this.imageCaptchaService = imageCaptchaService;
+	}
 	public UserService getUserService() {
 		return userService;
 	}
@@ -33,7 +43,10 @@ public class MyJDBCRealm extends AuthorizingRealm{
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
 			throws AuthenticationException {
-		UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) token;
+		UsernamePasswordCaptchaToken usernamePasswordToken = (UsernamePasswordCaptchaToken) token;
+		String captcha = usernamePasswordToken.getCaptcha();
+		String sessionId = (String)SecurityUtils.getSubject().getSession().getId();
+		boolean isValidate = imageCaptchaService.validateResponseForID(sessionId, captcha);
 		String userName = usernamePasswordToken.getUsername();
 		User user = userService.findUserByName(userName);
 		if(user==null) {

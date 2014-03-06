@@ -1,7 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
 %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -21,6 +23,9 @@
 <link href="resources/css/home.css" rel="stylesheet">
 <script src="resources/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <script src="resources/bootstrap/3.1.1/js/bootstrap.js"></script>
+<script>
+	$('.btn').button('complete')
+</script>
 </head>
 
 <body>
@@ -35,11 +40,19 @@
 		</ul>
 		<div class="navbar-right">
 			<a class="btn btn-primary navbar-btn " href="logout" role="button">退出</a>
-			<span class="glyphicon glyphicon-off"></span>
 		</div>
 	</div>
 	</nav>
-
+		<div class="row-fluid">
+			<div class="col-md-2">
+				<ul class="nav nav-pills nav-stacked">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#">Profile</a></li>
+					<li><a href="#">Messages</a></li>
+				</ul>
+			</div>
+		</div>
+	
 </body>
 
 </html>
