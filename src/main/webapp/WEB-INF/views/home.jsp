@@ -23,13 +23,10 @@
 <link href="resources/css/home.css" rel="stylesheet">
 <script src="resources/jquery/1.10.2/jquery-1.10.2.min.js"></script>
 <script src="resources/bootstrap/3.1.1/js/bootstrap.js"></script>
-<script>
-	$('.btn').button('complete')
-</script>
 </head>
 
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+	<nav id="nav" class="navbar navbar-default navbar-fixed-top" role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="#">JoonjeSoft</a>
