@@ -39,7 +39,7 @@
 									<div class="input-group">
 										<span class="input-group-addon"><span
 											class="glyphicon glyphicon-user"></span></span> <input type="text"
-											name="username" class="form-control" placeholder="请输入用户名">
+											name="username" class="form-control" placeholder="请输入用户名" value="${username}">
 									</div>
 								</div>
 							</div>
@@ -60,7 +60,7 @@
 										placeholder="验证码">
 								</div>
 								<div class="col-md-5">
-									<img id="captchaImg" alt="点击刷新" src="login/code"
+									<img id="captchaImg" alt="点击刷新" src="login/captcha"
 										onclick="refreshCaptcha()" />
 								</div>
 							</div>

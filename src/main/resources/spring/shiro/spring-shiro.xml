@@ -22,7 +22,7 @@
 			<value>
 				# some example chain definitions:
 				/login = authc
-				/login/code = anon
+				/login/captcha = anon
 				/js/** = anon
 				/logout = logout
 				/resources/**=anon

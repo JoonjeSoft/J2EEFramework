@@ -46,7 +46,7 @@ public class MyJDBCRealm extends AuthorizingRealm{
 		String sessionId = (String)SecurityUtils.getSubject().getSession().getId();
 		boolean isValidate = imageCaptchaService.validateResponseForID(sessionId, captcha);
 		if(!isValidate) {
-			
+			throw new IncorrectCaptchaException("验证码不正确！");
 		}
 		String userName = usernamePasswordToken.getUsername();
 		User user = userService.findUserByName(userName);

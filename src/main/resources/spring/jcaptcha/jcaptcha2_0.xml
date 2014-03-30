@@ -36,7 +36,7 @@
 			<ref bean="wordtoimage" />
 		</constructor-arg>
 		<constructor-arg>
-			<value>false</value>
+			<value>false</value><!-- 大小写是否敏感 -->
 		</constructor-arg>
 	</bean>
 
