@@ -7,6 +7,8 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,12 +55,18 @@ public class UserController {
 		Role role = new Role();
 		role.setName("管理员");
 		roleDao.save(role);
+		String salt = "123";
+		
+		//save the salt with the new account . The HashedCredentialsMatcher //will need it later when handling login attempts: user.setPasswordSalt(salt); userDAO.create(user);
 		for (int i = 0; i < 10; i++) {
 			int rInt = rm.nextInt(1);
 			User user = new User();
 			user.setId(String.valueOf(i));
 			user.setName("user"+i);
-			user.setPassword("password" + i);
+			String password = "password"+i;
+			String hashedPasswordBase64 = new Md5Hash(password, ByteSource.Util.bytes(salt), 1024).toBase64();
+			user.setPassword(hashedPasswordBase64);
+			
 			user.setRole(role);
 			user.setSex(rInt == 1 ? "男" : "女");
 			user.setCreateDate(new Date());

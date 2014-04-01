@@ -28,7 +28,7 @@
 				/resources/**=anon
 				#/error = anon
 				
-				/** = authc
+				#/** = authc
 				#/admin/** = authc,
 				#roles[admin]
 				#/docs/** = authc,
@@ -63,8 +63,17 @@
 			Ehcache configuration to be used, specify that here. If you don't, a default will be used.: <property 
 			name="cacheManagerConfigFile" value="classpath:ehcache/ehcache-shiro.xml"/> -->
 	</bean>
+	
+	<bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="md5"/>
+        <property name="hashIterations" value="1024"/>
+        <property name="storedCredentialsHexEncoded" value="false"/>
+	</bean>
 	<!-- Define the Shiro Realm implementation you want to use to connect to your back-end -->
 	<!-- security datasource: -->
-	<bean id="myRealm" class="com.joonje.security.MyJDBCRealm"/>
+	<bean id="myRealm" class="com.joonje.security.MyJDBCRealm">
+		<property name="credentialsMatcher" ref="credentialsMatcher"></property>
+	</bean>
+		
 		<!-- <property name="userService" ref="userService" /> -->
 </beans>

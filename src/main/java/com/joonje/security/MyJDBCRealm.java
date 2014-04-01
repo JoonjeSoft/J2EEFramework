@@ -11,24 +11,27 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.joonje.domain.User;
 import com.joonje.service.UserService;
 import com.octo.captcha.service.image.ImageCaptchaService;
 
-public class MyJDBCRealm extends AuthorizingRealm{
+public class MyJDBCRealm extends AuthorizingRealm {
 	@Autowired
 	private UserService userService;
 	@Resource
 	private ImageCaptchaService imageCaptchaService;
-	
+
 	public void setImageCaptchaService(ImageCaptchaService imageCaptchaService) {
 		this.imageCaptchaService = imageCaptchaService;
 	}
+
 	public UserService getUserService() {
 		return userService;
 	}
+
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
@@ -39,21 +42,21 @@ public class MyJDBCRealm extends AuthorizingRealm{
 	}
 
 	@Override
-	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token)
-			throws AuthenticationException {
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		UsernamePasswordCaptchaToken usernamePasswordToken = (UsernamePasswordCaptchaToken) token;
 		String captcha = usernamePasswordToken.getCaptcha();
-		String sessionId = (String)SecurityUtils.getSubject().getSession().getId();
+		String sessionId = (String) SecurityUtils.getSubject().getSession().getId();
 		boolean isValidate = imageCaptchaService.validateResponseForID(sessionId, captcha);
-		if(!isValidate) {
+		if (!isValidate) {
 			throw new IncorrectCaptchaException("验证码不正确！");
 		}
 		String userName = usernamePasswordToken.getUsername();
 		User user = userService.findUserByName(userName);
-		if(user==null) {
+		if (user == null) {
 			throw new UnknownAccountException("用户名不存在！");
 		}
-		return new SimpleAuthenticationInfo(user.getName(),user.getPassword(),"MyRealm");
+		String salt = "123";
+		return new SimpleAuthenticationInfo(user.getName(), user.getPassword(), ByteSource.Util.bytes(salt), super.getName());
 	}
 
 }
