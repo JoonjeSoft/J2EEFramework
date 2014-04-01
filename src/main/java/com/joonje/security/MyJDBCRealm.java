@@ -44,12 +44,12 @@ public class MyJDBCRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		UsernamePasswordCaptchaToken usernamePasswordToken = (UsernamePasswordCaptchaToken) token;
-		String captcha = usernamePasswordToken.getCaptcha();
-		String sessionId = (String) SecurityUtils.getSubject().getSession().getId();
-		boolean isValidate = imageCaptchaService.validateResponseForID(sessionId, captcha);
-		if (!isValidate) {
-			throw new IncorrectCaptchaException("验证码不正确！");
-		}
+//		String captcha = usernamePasswordToken.getCaptcha();
+//		String sessionId = (String) SecurityUtils.getSubject().getSession().getId();
+//		boolean isValidate = imageCaptchaService.validateResponseForID(sessionId, captcha);
+//		if (!isValidate) {
+//			throw new IncorrectCaptchaException("验证码不正确！");
+//		}
 		String userName = usernamePasswordToken.getUsername();
 		User user = userService.findUserByName(userName);
 		if (user == null) {

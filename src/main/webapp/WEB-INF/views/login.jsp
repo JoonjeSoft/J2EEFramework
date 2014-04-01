@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
@@ -53,17 +54,19 @@
 									</div>
 								</div>
 							</div>
-							<div class="form-group">
-								<div class="col-md-7">
-									<label class="sr-only" for="captcha">验证码</label> <input
-										type="text" class="form-control" id="captcha" name="captcha"
-										placeholder="验证码">
+							<c:if test="${jcaptchaEbabled}">
+								<div class="form-group">
+									<div class="col-md-7">
+										<label class="sr-only" for="captcha">验证码</label> <input
+											type="text" class="form-control" id="captcha" name="captcha"
+											placeholder="验证码">
+									</div>
+									<div class="col-md-5">
+										<img id="captchaImg" alt="点击刷新" src="login/captcha"
+											onclick="refreshCaptcha()" />
+									</div>
 								</div>
-								<div class="col-md-5">
-									<img id="captchaImg" alt="点击刷新" src="login/captcha"
-										onclick="refreshCaptcha()" />
-								</div>
-							</div>
+							</c:if>
 							<div class="form-group">
 								<div class="col-md-12">
 									<div class="checkbox">
