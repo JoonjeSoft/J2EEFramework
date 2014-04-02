@@ -19,7 +19,7 @@ import com.octo.captcha.service.image.ImageCaptchaService;
 public class CaptchaFilter extends AccessControlFilter {
 	private boolean enable = false;
 	private String captchaParam = "captcha";
-	private String errorKey = "captchaError";
+	private String errorKey = "shiroLoginFailure";
 	@Resource
 	private ImageCaptchaService imageCaptchaService;
 
@@ -75,7 +75,7 @@ public class CaptchaFilter extends AccessControlFilter {
 	protected boolean onAccessDenied(ServletRequest request, ServletResponse response)
 			throws Exception {
 		request.setAttribute(this.errorKey, "jCaptcha.error");
-		return false;
+		return true;
 	}
 
 }

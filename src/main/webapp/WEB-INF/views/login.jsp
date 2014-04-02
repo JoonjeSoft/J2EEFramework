@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":"
@@ -33,6 +34,12 @@
 				<div id="loginPanel" class="panel panel-primary">
 					<div class="panel-heading">系统登录</div>
 					<div class="panel-body">
+						<c:if test="${errorKey!=null}">
+							<div class="alert alert-warning alert-dismissable">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<spring:message code="${errorKey}" />
+							</div>
+						</c:if>
 						<form class="form-horizontal" role="form" action="login"
 							method="post">
 							<div class="form-group">
