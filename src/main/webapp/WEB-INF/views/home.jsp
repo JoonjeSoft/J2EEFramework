@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -36,7 +37,7 @@
 			<li><a href="#">关于</a></li>
 		</ul>
 		<div class="navbar-right">
-			<a class="btn btn-primary navbar-btn " href="logout" role="button">退出</a>
+			<a class="btn btn-primary navbar-btn " href="logout" role="button"><shiro:authenticated>退出</shiro:authenticated><shiro:notAuthenticated>登陆</shiro:notAuthenticated></a>
 		</div>
 	</div>
 	</nav>

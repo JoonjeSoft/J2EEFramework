@@ -7,6 +7,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 
+@Deprecated
 public class CaptchaFormAuthenticationFilter extends FormAuthenticationFilter {
 	public static final String DEFAULT_CAPTCHA_PARAM = "captcha";
 

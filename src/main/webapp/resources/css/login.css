@@ -1,6 +1,6 @@
-/* body {
-	background-color: #555;
-} */
+body {
+	background-color: #FFF;
+} 
 /*#loginPanel {
 	position: fixed;
 	top: 50%;
@@ -9,4 +9,12 @@
 	margin-top: -150px;
 	width: 300px;  
 	margin-left: -150px;
+}*/
+.logo {
+	text-align:center;
+	margin-top:50px;
+	padding:10px;
+}
+/*#loginPanel {
+	border-bottom: 1px solid #eee;
 }*/

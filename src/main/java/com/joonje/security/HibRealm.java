@@ -14,13 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.joonje.domain.User;
 import com.joonje.service.UserService;
 
-public class MyJDBCRealm extends AuthorizingRealm {
+public class HibRealm extends AuthorizingRealm {
 	@Autowired
 	private UserService userService;
-
-	public UserService getUserService() {
-		return userService;
-	}
 
 	public void setUserService(UserService userService) {
 		this.userService = userService;
@@ -33,11 +29,10 @@ public class MyJDBCRealm extends AuthorizingRealm {
 
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-		UsernamePasswordCaptchaToken usernamePasswordToken = (UsernamePasswordCaptchaToken) token;
-		String userName = usernamePasswordToken.getUsername();
+		String userName = (String)token.getPrincipal();
 		User user = userService.findUserByName(userName);
 		if (user == null) {
-			throw new UnknownAccountException("用户名不存在！");
+			throw new UnknownAccountException();
 		}
 		String salt = "123";
 		return new SimpleAuthenticationInfo(user.getName(), user.getPassword(), ByteSource.Util.bytes(salt), super.getName());

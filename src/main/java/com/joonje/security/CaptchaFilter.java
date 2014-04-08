@@ -17,9 +17,18 @@ import com.octo.captcha.service.image.ImageCaptchaService;
  * 
  */
 public class CaptchaFilter extends AccessControlFilter {
+	/**
+	 * 是否启用
+	 */
 	private boolean enable = false;
+	/**
+	 * 表单提交验证码输入域参数名称
+	 */
 	private String captchaParam = "captcha";
-	private String errorKey = "shiroLoginFailure";
+	/**
+	 * 验证码错误保存key
+	 */
+	private String failureKeyAttribute = "shiroLoginFailure";
 	@Resource
 	private ImageCaptchaService imageCaptchaService;
 
@@ -39,12 +48,12 @@ public class CaptchaFilter extends AccessControlFilter {
 		this.captchaParam = captchaParam;
 	}
 
-	public String getErrorKey() {
-		return errorKey;
+	public String getFailureKeyAttribute() {
+		return failureKeyAttribute;
 	}
 
-	public void setErrorKey(String errorKey) {
-		this.errorKey = errorKey;
+	public void setFailureKeyAttribute(String failureKeyAttribute) {
+		this.failureKeyAttribute = failureKeyAttribute;
 	}
 
 	public ImageCaptchaService getImageCaptchaService() {
@@ -56,8 +65,7 @@ public class CaptchaFilter extends AccessControlFilter {
 	}
 
 	@Override
-	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response,
-			Object mappedValue) throws Exception {
+	protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
 		request.setAttribute("jcaptchaEbabled", enable);
 		HttpServletRequest httpServletRequest = WebUtils.toHttp(request);
 		String requestMethod = httpServletRequest.getMethod();
@@ -71,10 +79,12 @@ public class CaptchaFilter extends AccessControlFilter {
 		}
 	}
 
+	/**
+	 * 访问拒绝，在request中添加验证码错误提示信息
+	 */
 	@Override
-	protected boolean onAccessDenied(ServletRequest request, ServletResponse response)
-			throws Exception {
-		request.setAttribute(this.errorKey, "jCaptcha.error");
+	protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
+		request.setAttribute(this.getFailureKeyAttribute(), "jCaptcha.error");
 		return true;
 	}
 

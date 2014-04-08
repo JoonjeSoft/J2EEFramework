@@ -2,6 +2,7 @@ package com.joonje.security;
 
 import org.apache.shiro.authc.UsernamePasswordToken;
 
+@Deprecated
 public class UsernamePasswordCaptchaToken extends UsernamePasswordToken {
 	private static final long serialVersionUID = 1L;
 	private String captcha;
