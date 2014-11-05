@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html manifest="">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8">
+
+    <title>JoonjeSoft</title>
+	<link type="text/css" rel="stylesheet" href="css/font-awesome.css">
+    <!-- The line below must be kept intact for Sencha Cmd to build your application -->
+    <script id="microloader" type="text/javascript" src="ext/ext-all-debug.js"></script>
+	<script>
+	var store = Ext.create('Ext.data.TreeStore', {
+	    root: {
+	        expanded: true,
+	        children: [
+	            { text: "detention", leaf: true },
+	            { text: "homework", expanded: true, children: [
+	                { text: "book report", leaf: true },
+	                { text: "algebra", leaf: true}
+	            ] },
+	            { text: "buy lottery tickets", leaf: true }
+	        ]
+	    }
+	});
+
+	Ext.create('Ext.tree.Panel', {
+	    title: 'Simple Tree',
+	    width: 200,
+	    height: 150,
+	    store: store,
+	    rootVisible: false,
+	    renderTo: Ext.getBody()
+	});
+	
+	
+	</script>
+</head>
+<body></body>
+</html>

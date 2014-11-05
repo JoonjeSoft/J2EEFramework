@@ -1,0 +1,23 @@
+Ext.define('JoonjeSoft.view.user.Edit',{
+	extend:'Ext.window.Window',
+	alias:'widget.userEdit',
+	title:'编辑用户',
+	layout:'fit',
+	autoShow:true,
+	initComponent:function() {
+		this.items=[
+			{
+				xtype:'form',
+				items:[
+					{xtype:'textfield',name:'name',fieldLabel:'Name'},				
+					{xtype:'textfield',name:'password',fieldLabel:'Password'}			
+				]
+			}
+		];
+		this.buttons=[
+			{text:'保存',action:'save'},
+			{text:'取消',action:this.close}		
+		];
+		this.callParent(arguments);
+	}
+});

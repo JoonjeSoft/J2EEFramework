@@ -24,5 +24,5 @@ Ext.application({
         'MainViewport'
     ],
     autoCreateViewport: true,
-    name: 'MyApp'
+    name: 'joonjesoft'
 });

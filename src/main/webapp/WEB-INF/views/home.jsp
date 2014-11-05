@@ -37,7 +37,8 @@
 			<li><a href="#">关于</a></li>
 		</ul>
 		<div class="navbar-right">
-			<a class="btn btn-primary navbar-btn " href="logout" role="button"><shiro:authenticated>退出</shiro:authenticated><shiro:notAuthenticated>登陆</shiro:notAuthenticated></a>
+			<shiro:authenticated><a class="btn btn-primary navbar-btn " href="logout" role="button">退出</a></shiro:authenticated>
+			<shiro:notAuthenticated><a class="btn btn-primary navbar-btn " href="login" role="button">登录</a></shiro:notAuthenticated>
 		</div>
 	</div>
 	</nav>
