@@ -40,6 +40,7 @@
 		<level value="TRACE" />
 		<appender-ref ref="stdout" />
 	</logger>
+	
 	<logger name="jdbc.sqltiming" level="INFO">
 		<appender-ref ref="stdout" />
 	</logger>

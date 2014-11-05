@@ -14,6 +14,7 @@
 	<import resource="interceptors.xml" />
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 	<mvc:resources location="/js/" mapping="/js/**" />
+	<mvc:resources location="/view/" mapping="/view/**" />
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />

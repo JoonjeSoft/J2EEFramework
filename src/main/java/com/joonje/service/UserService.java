@@ -33,6 +33,10 @@ public class UserService {
 		return userDao.save(user);
 	}
 	
+	public void delete(String userId) {
+		userDao.delete(userId);
+	}
+	
 	public void deleteAll(){
 		userDao.deleteAll();
 	}

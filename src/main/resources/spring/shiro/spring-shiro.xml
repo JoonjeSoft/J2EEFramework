@@ -35,14 +35,8 @@
 				/ = anon
 				#/error = anon
 				
-				/** = authc
-				#/admin/** = authc,
-				#roles[admin]
-				#/docs/** = authc,
-				#perms[document:read]
 				#/** = authc
-				# more URL-to-FilterChain
-				#definitions here
+				#/admin/** = authc,
 			</value>
 		</property>
 	</bean>
