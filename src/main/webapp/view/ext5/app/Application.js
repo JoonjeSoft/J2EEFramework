@@ -5,7 +5,9 @@
  */
 Ext.define('JoonjeSoft.Application', {
     extend: 'Ext.app.Application',
-    
+    requires: [
+		        'JoonjeSoft.view.home.Viewport'
+    ],
     name: 'JoonjeSoft',
 
     stores: [
@@ -13,6 +15,7 @@ Ext.define('JoonjeSoft.Application', {
     ],
     
     launch: function () {
-		
+//		Ext.create('JoonjeSoft.view.Login', {renderTo: Ext.getBody()});
+		Ext.create('JoonjeSoft.view.home.Viewport');
 	}
 });

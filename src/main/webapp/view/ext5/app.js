@@ -5,10 +5,10 @@
  */
 Ext.application({
     name: 'JoonjeSoft',
-	requires:['JoonjeSoft.view.main.MainController','JoonjeSoft.view.main.MainModel'],
+
     extend: 'JoonjeSoft.Application',
     
-    autoCreateViewport: 'JoonjeSoft.view.main.Main'
+//    autoCreateViewport: 'JoonjeSoft.view.main.Main'
 	
     //-------------------------------------------------------------------------
     // Most customizations should be made to JoonjeSoft.Application. If you need to

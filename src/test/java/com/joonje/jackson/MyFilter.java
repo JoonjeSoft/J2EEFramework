@@ -10,30 +10,31 @@ import com.fasterxml.jackson.databind.ser.PropertyWriter;
 
 public class MyFilter implements PropertyFilter {
 
-	@Override
-	public void serializeAsField(Object pojo, JsonGenerator jgen, SerializerProvider prov, PropertyWriter writer) throws Exception {
+	public void serializeAsField(Object pojo, JsonGenerator jgen,
+			SerializerProvider prov, PropertyWriter writer) throws Exception {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-	@Override
-	public void serializeAsElement(Object elementValue, JsonGenerator jgen, SerializerProvider prov, PropertyWriter writer) throws Exception {
+	public void serializeAsElement(Object elementValue, JsonGenerator jgen,
+			SerializerProvider prov, PropertyWriter writer) throws Exception {
 		// TODO Auto-generated method stub
-
+		
 	}
 
-	@Override
-	@Deprecated
-	public void depositSchemaProperty(PropertyWriter writer, ObjectNode propertiesNode, SerializerProvider provider) throws JsonMappingException {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void depositSchemaProperty(PropertyWriter writer, JsonObjectFormatVisitor objectVisitor, SerializerProvider provider)
+	public void depositSchemaProperty(PropertyWriter writer,
+			ObjectNode propertiesNode, SerializerProvider provider)
 			throws JsonMappingException {
 		// TODO Auto-generated method stub
-
+		
 	}
+
+	public void depositSchemaProperty(PropertyWriter writer,
+			JsonObjectFormatVisitor objectVisitor, SerializerProvider provider)
+			throws JsonMappingException {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

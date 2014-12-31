@@ -6,17 +6,35 @@
 <struts>
 
 	<constant name="struts.devMode" value="true" />
-
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
 	<package name="/" extends="struts-default">
-
+		<interceptors>
+			<interceptor name="my" class="com.joonje.struts.interceptor.MyInterceptor">
+			</interceptor>
+		</interceptors>
+		<default-action-ref name="index"></default-action-ref>
 		<action name="index">
-			<result>/index.jsp</result>
+			<result>/view/struts/index.jsp</result>
 		</action>
-
-		<action name="hello" class="com.joonje.struts.action.HelloWorldAction" method="execute">
-			<result name="success">/index1.jsp</result>
+		
+		<action name="hello" class="com.joonje.struts.action.HelloWorldAction">
+			<interceptor-ref name="my">
+				<param name="includeMethods">httpElement</param>
+			</interceptor-ref>
+			<result name="success">/view/struts/dmiresult.jsp</result>
+			<result name="param">/view/struts/param.jsp</result>
+			<result name="http">/view/struts/http.jsp</result>
+			<result name="input">/view/struts/repeatSubmit.jsp</result>
+			<result name="dispatcher" type="dispatcher">/view/struts/dispatcher.jsp</result>
+			<result name="redirect" type="redirect">/view/struts/redirect.jsp</result>
+			<result name="redirectAction" type="redirectAction">hello!httpElement</result>
 		</action>
-
+		<action name="repeatSubmit" class="com.joonje.struts.action.RepeatSubmitAction">
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="token"></interceptor-ref>
+			<result name="invalid.token">/view/struts/invalidSubmit.jsp</result>
+			<result>/view/struts/repeatSubmit.jsp</result>
+		</action>
 	</package>
 
 </struts>

@@ -28,7 +28,7 @@
      * The name of the theme for this application.
      */
     
-    "theme": "ext-theme-neptune",
+    "theme": "ext-theme-crisp",
     
     /**
      * The list of required packages (with optional versions; default is "latest").
@@ -316,5 +316,5 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "c16cf312-ab44-4b1a-ba20-ae1ae483ef23"
+    "id": "0b0de2f0-a4ae-4c20-ac85-7e2df29f945a"
 }
