@@ -12,28 +12,24 @@ public class MyFilter implements PropertyFilter {
 
 	public void serializeAsField(Object pojo, JsonGenerator jgen,
 			SerializerProvider prov, PropertyWriter writer) throws Exception {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void serializeAsElement(Object elementValue, JsonGenerator jgen,
 			SerializerProvider prov, PropertyWriter writer) throws Exception {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void depositSchemaProperty(PropertyWriter writer,
 			ObjectNode propertiesNode, SerializerProvider provider)
 			throws JsonMappingException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void depositSchemaProperty(PropertyWriter writer,
 			JsonObjectFormatVisitor objectVisitor, SerializerProvider provider)
 			throws JsonMappingException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 

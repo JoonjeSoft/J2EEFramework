@@ -4,6 +4,7 @@
 Ext.define('JoonjeSoft.view.main.region.MainMenuTree', {
     extend: 'Ext.tree.Panel',
     alias: 'widget.mainmenutree',
+    uses: ['Ext.data.TreeStore','Ext.data.TreeModel'],
     id:'abcd',
     title: '系统菜单',
     glyph: 0xf0c9,

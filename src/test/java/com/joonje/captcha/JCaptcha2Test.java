@@ -23,19 +23,19 @@ public class JCaptcha2Test extends AbstractJUnit4SpringContextTests {
 	CaptchaService captchaService;
 	@Test
 	public void test() throws Exception{
-		for(int i=0;i<20;i++){
-			BufferedImage image = (BufferedImage)captchaService.getChallengeForID(String.valueOf(i));
-			ImageIO.write(image, "jpg", new File("e:/abcd"+i+".jpg"));
-		}
+//		for(int i=0;i<20;i++){
+//			BufferedImage image = (BufferedImage)captchaService.getChallengeForID(String.valueOf(i));
+//			ImageIO.write(image, "jpg", new File("e:/abcd"+i+".jpg"));
+//		}
 	}
 	@Test
 	public void test1() throws Exception{
 		CaptchaStore captchaStore =  new FastHashMapCaptchaStore();
 		//CaptchaEngine captchaEngine = new HotmailEngine();
-		DefaultManageableImageCaptchaService service = new DefaultManageableImageCaptchaService(captchaStore, null, 180, 100000, 75000);
-		for(int i=0;i<20;i++){
-			BufferedImage image = (BufferedImage)service.getChallengeForID(String.valueOf(i));
-			ImageIO.write(image, "jpg", new File("e:/abcd"+i+".jpg"));
-		}
+//		DefaultManageableImageCaptchaService service = new DefaultManageableImageCaptchaService(captchaStore, null, 180, 100000, 75000);
+//		for(int i=0;i<20;i++){
+//			BufferedImage image = (BufferedImage)service.getChallengeForID(String.valueOf(i));
+//			ImageIO.write(image, "jpg", new File("e:/abcd"+i+".jpg"));
+//		}
 	}
 }

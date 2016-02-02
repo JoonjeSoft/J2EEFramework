@@ -27,12 +27,12 @@
 		<property name="filterChainDefinitions">
 			<value>
 				# some example chain definitions:
-				/login = captcha,authc
-				/login/captcha = anon
-				/js/** = anon
-				/logout = logout
-				/resources/**=anon
-				/ = anon
+				#/login = captcha,authc
+				#/login/captcha = anon
+				#/js/** = anon
+				#/logout = logout
+				#/resources/**=anon
+				#/ = authc
 				#/error = anon
 				
 				#/** = authc

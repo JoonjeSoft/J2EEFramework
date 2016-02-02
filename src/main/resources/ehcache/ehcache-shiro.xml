@@ -18,7 +18,8 @@
   -->
 
 <!-- EhCache XML configuration file used for Shiro spring sample application -->
-<ehcache>
+<ehcache  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd" updateCheck="false">
 
     <!-- Sets the path to the directory where cache .data files are created.
 

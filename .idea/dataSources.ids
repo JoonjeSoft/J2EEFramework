@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="H2 - JoonjeSoft;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE" uuid="a6529489-d116-42eb-9612-c1210ab209ae">
+    <database-info product="H2" version="1.3.175 (2014-01-18)" jdbc-version="4.0" driver-name="H2 JDBC Driver" driver-version="1.3.175 (2014-01-18)">
+      <identifier-quote-string>&quot;</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
+    <schema name="PUBLIC" catalog="JOONJESOFT"/>
+    <table name="ROLE" schema="PUBLIC" catalog="JOONJESOFT" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_2" columns="ID"/>
+      <exported-key name="FK_DL7G53F7LPMORJC24KX74APX8" table="USER" schema="PUBLIC" catalog="JOONJESOFT" columns="ROLE"/>
+    </table>
+    <table name="USER" schema="PUBLIC" catalog="JOONJESOFT" type="TABLE">
+      <column name="ID" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATE_DATE" sqlType="TIMESTAMP" precision="23" scale="10" nullable="true" jdbcType="93"/>
+      <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="PASSWORD" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="SEX" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="ROLE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <primary-key name="CONSTRAINT_27" columns="ID"/>
+      <foreign-key name="FK_DL7G53F7LPMORJC24KX74APX8" columns="ROLE" ref-table="ROLE" ref-schema="PUBLIC" ref-catalog="JOONJESOFT" ref-columns="ID" update-rule="1" delete-rule="1" deferrability="2"/>
+      <index name="FK_DL7G53F7LPMORJC24KX74APX8_INDEX_2" unique="false" columns="ROLE"/>
+    </table>
+  </data-source>
+</component>

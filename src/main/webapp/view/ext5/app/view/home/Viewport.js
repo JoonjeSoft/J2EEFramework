@@ -9,7 +9,7 @@ Ext.define('JoonjeSoft.view.home.Viewport', {
     },
     items: [
         {
-            xtype: 'loginform'
+            xtype: 'app-main'
         } 
     ]
 });

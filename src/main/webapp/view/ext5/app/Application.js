@@ -15,7 +15,12 @@ Ext.define('JoonjeSoft.Application', {
     ],
     
     launch: function () {
-//		Ext.create('JoonjeSoft.view.Login', {renderTo: Ext.getBody()});
-		Ext.create('JoonjeSoft.view.home.Viewport');
+		//Ext.create('JoonjeSoft.view.Login');
+        //Ext.create('JoonjeSoft.view.Login', {renderTo: Ext.getBody()});
+		//Ext.create('JoonjeSoft.view.home.Viewport');
+        //Ext.create('JoonjeSoft.view.main.Main');
+        //Ext.create('JoonjeSoft.view.main.Main',{renderTo:this.viewport});
+        //this.viewport= new JoonjeSoft.view.home.Viewport();
+        //Ext.create('JoonjeSoft.view.Login',{renderTo:this.viewport});
 	}
 });
