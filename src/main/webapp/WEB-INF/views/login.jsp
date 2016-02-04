@@ -32,9 +32,9 @@
     <img src="resources/images/joonje.png" />
 </div>--%>
     <div class="container">
-        <div class="row"  style="top:500px;">
+        <div class="row">
             <div class="col-md-4 col-sm-4 col-md-offset-4 col-sm-offset-4">
-                <div id="loginPanel" class="modal-content panel panel-primary"  style="margin-top:50%;">
+                <div id="loginPanel" class="modal-content panel panel-primary">
                     <div class="panel-heading">系统登录</div>
                     <div class="panel-body">
                         <c:if test="${param.errorKey!=null}">
