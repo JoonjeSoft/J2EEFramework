@@ -38,12 +38,12 @@ public class FreemarkerController {
 //        map.remove("ad");
 //        mav.addObject("maplist", map);
         User user = new User();
-        user.setId("5");
-        user.setName("joonje");
-        user.setPassword("123");
-        user.setSex("1");
-        mav.addObject(user);
-        mav.setViewName("hello");
+//        user.setId("5");
+//        user.setName("joonje");
+//        user.setPassword("123");
+//        user.setSex("1");
+//        mav.addObject(user);
+//        mav.setViewName("hello");
         return user;
     }
 }

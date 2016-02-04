@@ -35,7 +35,7 @@ public class HibRealm extends AuthorizingRealm {
 			throw new UnknownAccountException();
 		}
 		String salt = "123";
-		return new SimpleAuthenticationInfo(user.getName(), user.getPassword(), ByteSource.Util.bytes(salt), super.getName());
+		return new SimpleAuthenticationInfo(user.getName(), user.getPassword(), null, super.getName());
 	}
 
 }

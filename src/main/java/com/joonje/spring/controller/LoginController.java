@@ -40,7 +40,11 @@ public class LoginController {
 	public String login() {
 		return "login";
 	}
-	
+
+	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
+	public String home() {
+		return "home";
+	}
 	@RequestMapping(method = RequestMethod.POST)
 	public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM) String userName,HttpServletRequest req,Model model) {
 		model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, userName);
@@ -58,7 +62,7 @@ public class LoginController {
         	errorKey = "user.login.othererror";
         }
         model.addAttribute("errorKey", errorKey);
-		return "login";
+		return "redirect:/login";
 	}
 	/**
 	 * 生成验证码图片
